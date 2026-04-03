@@ -19,7 +19,7 @@ export default function Contact() {
     .then(() => setState('success'))
     .catch(() => setState('idle'));
     
-    setTimeout(() => setState('idle'), 60000);
+    setTimeout(() => setState('idle'), 8000);
   };
 
   const inputStyle = {
@@ -140,20 +140,20 @@ export default function Contact() {
                         fontFamily: 'var(--font)', letterSpacing: '-0.04em', 
                         marginBottom: '12px'
                       }}>
-                        🚀 Message Launched!
+                        🚀 Message Launched...!
                       </h4>
                       <p style={{ 
                         color: '#64748b', fontFamily: 'var(--font)', 
                         maxWidth: '320px', lineHeight: '1.7', fontSize: '16px',
                         marginBottom: '8px'
                       }}>
-                        Your message rocketed to my inbox! <span style={{ color: '#22c55e' }}>✨</span>
+                        Thank you for reaching out. Your message rocketed to my inbox! <span style={{ color: '#22c55e' }}>✨</span>
                       </p>
                       <p style={{ 
                         color: '#94a3b8', fontFamily: 'var(--font)', 
                         fontSize: '14px', margin: 0
                       }}>
-                        I'll reply within 24 hours. Let's build something amazing! 🎯
+                        I'll reply within 24 hours. Let's build something amazing! Feel free to explore my latest case studies or connect with me on LinkedIn 🎯
                       </p>
                     </div>
 
