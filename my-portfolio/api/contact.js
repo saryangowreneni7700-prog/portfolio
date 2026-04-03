@@ -1,5 +1,3 @@
-import nodemailer from 'nodemailer';
-
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
@@ -12,6 +10,8 @@ export default async function handler(req, res) {
   }
 
   try {
+    const nodemailer = (await import('nodemailer')).default;
+    
     const transporter = nodemailer.createTransporter({
       host: 'smtp.gmail.com',
       port: 587,
