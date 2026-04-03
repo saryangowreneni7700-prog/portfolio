@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #06060f;
+  --bg-card: #0d0d1a;
+  --bg-subtle: #111122;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-hover: rgba(255, 255, 255, 0.14);
+  --primary: #7c3aed;
+  --primary-light: #a78bfa;
+  --secondary: #ec4899;
+  --accent: #06b6d4;
+  --green: #22c55e;
+  --text: #f1f5f9;
+  --text-muted: #64748b;
+  --text-subtle: #94a3b8;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font);
+  background-color: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+::selection { background: rgba(124, 58, 237, 0.3); color: #fff; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: rgba(124, 58, 237, 0.4); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(124, 58, 237, 0.7); }
+
+.animate-marquee { animation: marquee 30s linear infinite; }
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes float-a { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-20px) rotate(3deg); } }
+@keyframes float-b { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(16px) rotate(-3deg); } }
+@keyframes pulse-ring { 0% { transform: scale(1); opacity: 0.7; } 100% { transform: scale(1.6); opacity: 0; } }
+
+.float-a { animation: float-a 6s ease-in-out infinite; }
+.float-b { animation: float-b 8s ease-in-out infinite; }
+.pulse-ring { animation: pulse-ring 2s ease-out infinite; }
+
+@media (max-width: 768px) {
+  .hero-grid { grid-template-columns: 1fr !important; }
+  .hero-right { display: none !important; }
+  .about-grid { grid-template-columns: 1fr !important; }
+  .contact-grid { grid-template-columns: 1fr !important; }
+  .stats-grid { grid-template-columns: 1fr 1fr !important; }
+  .desktop-nav { display: none !important; }
+  .mobile-menu-btn { display: flex !important; }
+}
