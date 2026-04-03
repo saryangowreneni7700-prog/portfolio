@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, CheckCircle2, Send } from 'lucide-react';
+import { Mail, MapPin, CheckCircle2, Send, Rocket, Star, Sparkles } from 'lucide-react';
 
 export default function Contact() {
   const [state, setState] = useState('idle'); // idle, submitting, success
@@ -19,7 +19,7 @@ export default function Contact() {
     .then(() => setState('success'))
     .catch(() => setState('idle'));
     
-    setTimeout(() => setState('idle'), 4000);
+    setTimeout(() => setState('idle'), 5000);
   };
 
   const inputStyle = {
@@ -42,7 +42,7 @@ export default function Contact() {
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 32px' }}>
         <div className="contact-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1.3fr', gap: '64px', alignItems: 'start' }}>
           
-          {/* Left Info */}
+          {/* Left Info - UNCHANGED */}
           <motion.div 
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -94,27 +94,90 @@ export default function Contact() {
             <div style={{ padding: '36px', borderRadius: '24px', background: 'var(--bg-card)', border: '1px solid var(--border)' }}>
               {state === 'success' ? (
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, scale: 0.92, rotate: -5 }}
+                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                  transition={{ duration: 0.6, type: 'spring', stiffness: 300, damping: 20 }}
                 >
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '380px', textAlign: 'center', gap: '16px' }}>
-                    <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(34, 197, 94, 0.12)', border: '1px solid rgba(34, 197, 94, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <CheckCircle2 size={30} color="#4ade80" />
-                    </div>
-                    <h4 style={{ fontSize: '22px', fontWeight: '800', color: '#f1f5f9', fontFamily: 'var(--font)', letterSpacing: '-0.04em' }}>Message Received!</h4>
-                    <p style={{ color: '#64748b', fontFamily: 'var(--font)', maxWidth: '280px', lineHeight: '1.6' }}>
-                      Thank you for reaching out. I'll get back to you within 24 hours.
-                    </p>
-                    <button 
-                      onClick={() => setState('idle')}
-                      style={{ marginTop: '8px', background: 'none', border: 'none', color: '#a78bfa', cursor: 'pointer', fontSize: '14px', fontFamily: 'var(--font)', fontWeight: '600' }}
+                  <div style={{ 
+                    display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', 
+                    minHeight: '380px', textAlign: 'center', gap: '24px', padding: '32px' 
+                  }}>
+                    {/* Premium Rocket Animation */}
+                    <motion.div 
+                      animate={{ 
+                        y: [0, -8, 0], 
+                        rotate: [0, 5, -5, 0],
+                        scale: [1, 1.1, 1]
+                      }}
+                      transition={{ 
+                        duration: 2, 
+                        repeat: Infinity, 
+                        repeatType: 'reverse',
+                        ease: 'easeInOut'
+                      }}
+                      style={{ position: 'relative' }}
                     >
-                      Send another
-                    </button>
+                      <div style={{ 
+                        width: '80px', height: '80px', borderRadius: '50%', 
+                        background: 'linear-gradient(135deg, #22c55e, #4ade80)', 
+                        boxShadow: '0 0 40px rgba(34, 197, 94, 0.6)', 
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        position: 'relative',
+                        border: '3px solid rgba(255,255,255,0.2)'
+                      }}>
+                        <Rocket size={32} color="white" strokeWidth={2} />
+                      </div>
+                      {/* Sparkle Effects */}
+                      <Sparkles size={20} color="#fbbf24" style={{ position: 'absolute', top: -8, left: '50%', transform: 'translateX(-50%)', opacity: 0.8 }} />
+                      <Star size={16} color="#f59e0b" style={{ position: 'absolute', bottom: -4, right: 4, opacity: 0.7 }} />
+                    </motion.div>
+
+                    <div>
+                      <h4 style={{ 
+                        fontSize: '28px', fontWeight: '900', 
+                        background: 'linear-gradient(135deg, #f1f5f9, #e2e8f0)', 
+                        WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+                        fontFamily: 'var(--font)', letterSpacing: '-0.04em', 
+                        marginBottom: '12px'
+                      }}>
+                        🚀 Message Launched!
+                      </h4>
+                      <p style={{ 
+                        color: '#64748b', fontFamily: 'var(--font)', 
+                        maxWidth: '320px', lineHeight: '1.7', fontSize: '16px',
+                        marginBottom: '8px'
+                      }}>
+                        Your message rocketed to my inbox! <span style={{ color: '#22c55e' }}>✨</span>
+                      </p>
+                      <p style={{ 
+                        color: '#94a3b8', fontFamily: 'var(--font)', 
+                        fontSize: '14px', margin: 0
+                      }}>
+                        I'll reply within 24 hours. Let's build something amazing! 🎯
+                      </p>
+                    </div>
+
+                    <motion.button 
+                      onClick={() => setState('idle')}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.98 }}
+                      style={{ 
+                        display: 'flex', alignItems: 'center', gap: '8px', 
+                        background: 'linear-gradient(135deg, #7c3aed, #6d28d9)', 
+                        color: 'white', border: 'none', borderRadius: '12px', 
+                        padding: '14px 28px', fontWeight: '700', fontSize: '15px', 
+                        cursor: 'pointer', fontFamily: 'var(--font)', 
+                        letterSpacing: '-0.02em', boxShadow: '0 8px 32px rgba(124, 58, 237, 0.4)'
+                      }}
+                    >
+                      <Sparkles size={16} />
+                      Send Another Message
+                    </motion.button>
                   </div>
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
+                  {/* Form fields - UNCHANGED */}
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
                     <div>
                       <label style={{ display: 'block', fontSize: '12px', fontWeight: '600', color: '#64748b', marginBottom: '8px', fontFamily: 'var(--font)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Name</label>
