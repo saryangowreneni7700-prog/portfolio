@@ -19,7 +19,7 @@ export default function Contact() {
     .then(() => setState('success'))
     .catch(() => setState('idle'));
     
-    setTimeout(() => setState('idle'), 8000);
+    setTimeout(() => setState('idle'), 20000);
   };
 
   const inputStyle = {
